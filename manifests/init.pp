@@ -40,6 +40,12 @@ class foreman(
         ensure => absent,
       }
 
+      boxen::env_script { 'foreman-fish':
+        ensure   => $ensure,
+        priority => 'lower',
+        source   => 'puppet:///modules/foreman/foreman.fish',
+      }
+      
       boxen::env_script { 'foreman':
         ensure   => $ensure,
         priority => 'lower',
